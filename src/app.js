@@ -6,7 +6,7 @@ require("dotenv").config();
 
 const middlewares = require("./middlewares");
 const api = require("./api");
-const Thubnails = require("./functions/thubnail"); // Correctly import Thubnails
+const Thumbnails = require("./functions/thubnail"); // Correctly import Thumbnails
 
 const app = express();
 
@@ -21,11 +21,11 @@ app.get("/", (req, res) => {
   });
 });
 
-app.get("/thumbnail/:id", async (req, res) => {
+app.get("/thumbnails/:id", async (req, res) => {
   const ss = req.query.ss || null;
   const ep = req.query.ep || null;
   const id = req.params.id;
-  const t = new Thubnails(id, ss, ep);
+  const t = new Thumbnails(id, ss, ep);
 
   try {
     const thumbnailUrl = await t.main();
